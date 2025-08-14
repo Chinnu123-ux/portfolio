@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Narendra — Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="color-scheme" content="dark">
+  <style>
+    /* ---------- your existing styles ---------- */
+    html { scroll-behavior: smooth; }
+    .glow { box-shadow: 0 0 0px rgba(234,179,8,0),0 0 50px rgba(234,179,8,0.15),inset 0 0 0 rgba(234,179,8); }
+    .glow:hover { box-shadow: 0 0 0px rgba(234,179,8,0),0 0 70px rgba(234,179,8,0.3),inset 0 0 0 rgba(234,179,8); }
+    .hero-pulse::after {
+      content:""; position:absolute; inset:-8px;
+      border-radius:9999px; filter:blur(28px);
+      background: radial-gradient(circle at 50% 50%, rgba(234,179,8,.55), transparent 60%);
+      animation: pulse 2.4s ease-in-out infinite;
+      z-index:-1;
+    }
+    @keyframes pulse {0%,100%{opacity:.75; transform:scale(.98)} 50%{opacity:1; transform:scale(1.03)}}
+    .modal { display: none; position: fixed; inset:0; justify-content:center; align-items:center; z-index:50; }
+    .modal.show { display:flex; }
+
+    /* ---------- BACKGROUND (paste this as you had it) ---------- */
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background-attachment: fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    /* particles container (keeps it behind everything) */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* blinking cursor used in hero */
+    @keyframes blink { 0%,50%,100% { opacity: 1 } 25%,75% { opacity: 0 } }
+    .animate-blink { animation: blink 1s step-start infinite; }
+
+    /* small helper so text remains readable on gradient */
+    .overlay-bg { background: rgba(0,0,0,0.24); }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100 selection:bg-yellow-400 selection:text-black">
+
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900/70 backdrop-blur border-b border-gray-800">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="#home" class="font-bold text-lg tracking-tight">S.Narendra Kumar </a>
+      <ul class="hidden sm:flex gap-6 text-sm">
+        <li><a href="#about" class="hover:text-yellow-400">About</a></li>
+        <li><a href="#projects" class="hover:text-yellow-400">Projects</a></li>
+        <li><a href="#games" class="hover:text-yellow-400">Games</a></li>
+        <li><a href="#contact" class="hover:text-yellow-400">Contact</a></li>
+        <li><a href="#technologies" class="hover:text-yellow-400">Tech</a></li>
+      </ul>
+      <a href="assets/resume.pdf" target="_blank" class="px-3 py-1.5 bg-yellow-400 text-black rounded-md font-medium glow">Resume</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="pt-28 pb-16">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-[auto,1fr] items-center gap-10">
+      <!-- Profile Photo -->
+      <div class="justify-self-center relative hero-pulse">
+        <img id="profilePhoto" src="assets/photo.jpg" alt="Narendra" class="w-36 h-36 rounded-full border-4 border-yellow-400 object-cover cursor-pointer">
+      </div>
+
+      <!-- Hero Text -->
+      <div class="text-center md:text-left">
+        <h1 class="text-3xl md:text-4xl font-bold leading-snug">
+          <span id="dynamicText">Hello, I'm Setti Narendra Kumar</span>
+          <span id="cursor" class="inline-block w-1 bg-yellow-400 ml-1 animate-blink"></span>
+        </h1>
+        <div class="mt-4 flex flex-wrap gap-3 justify-center md:justify-start">
+          <a href="#projects" class="px-4 py-2 rounded-md bg-yellow-400 text-black font-semibold glow text-sm">View Projects</a>
+          <a href="#games" class="px-4 py-2 rounded-md bg-yellow-400 text-black font-semibold glow text-sm">Play Games</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">About Me</h2>
+
+      <p class="mt-3 text-gray-300 max-w-3xl">
+        Hi, I’m <strong>Setti Narendra Kumar</strong>, a Computer Science and Design undergraduate passionate about creating interactive web experiences and real-time applications. I specialize in <strong>full-stack development</strong> with <strong>React.js, Node.js, Express.js, and MongoDB</strong>, and I love crafting clean, responsive UIs using <strong>Tailwind CSS</strong>.
+      </p>
+
+      <p class="mt-3 text-gray-300 max-w-3xl">
+        My recent projects include a <strong>feature-rich chat app</strong> with private messaging, emojis, image sharing, and live presence indicators, powered by <strong>Socket.IO</strong>. I also enjoy building mini-games like <strong>Memory, Snake, and Tic-Tac-Toe</strong>, reflecting my playful approach to learning and development.
+      </p>
+
+      <p class="mt-3 text-gray-300 max-w-3xl">
+        Beyond coding, I’ve led campus events like <strong>SpellBee Champions</strong> and <strong>Koun Banega Codepathi</strong>, blending technical expertise with creativity and leadership. I’m fluent in <strong>Telugu, Hindi, English</strong> and currently learning <strong>Japanese</strong>, bringing a multicultural perspective to my work.
+      </p>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGIES -->
+  <section id="technologies" class="py-16 bg-gray-900/20 border-y border-gray-800">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-4">Technologies I Learned</h2>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">Python</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">Java(basics)</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">HTML5</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">CSS3</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">Tailwind CSS</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">JavaScript</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">React.js</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">Node.js</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">Express.js</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">MongoDB</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">Socket.io</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">Communication skills</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">English speaking</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">Canva</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">Github</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">Render</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">Netlify</span>
+        <span class="px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold">Vercel</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-16 bg-gray-900/40 border-y border-gray-800">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8">Projects</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="rounded-xl border border-gray-800 bg-gray-900 hover:border-yellow-400/60 transition overflow-hidden p-4">
+          <h3 class="font-semibold text-lg">Real-Time Chat App</h3>
+          <p class="text-sm text-gray-300 mt-1">
+            React + Node.js + Socket.io + MongoDB. Supports private rooms, emojis, image sharing, and online presence.
+          </p>
+          <div class="mt-2 flex gap-3">
+            <a href="https://chat-app-frontend-twth.onrender.com" target="_blank" class="text-yellow-400 hover:underline">Live Demo</a>
+            <a href="https://github.com/Chinnu123-ux/chatapp" target="_blank" class="text-yellow-400 hover:underline">GitHub</a>
+          </div>
+        </article>
+        <article class="rounded-xl border border-gray-800 bg-gray-900/60 p-6 flex items-center justify-center text-gray-400">
+          Coming soon…
+        </article>
+        <article class="rounded-xl border border-gray-800 bg-gray-900/60 p-6 flex items-center justify-center text-gray-400">
+          Coming soon…
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMES -->
+  <section id="games" class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">Games</h2>
+      <p class="text-gray-300 mb-4">Click a game to play in a modal:</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <button onclick="startGame('memory')" class="px-5 py-3 rounded-lg bg-yellow-400 text-black font-semibold glow w-full">Memory Game</button>
+        <button onclick="startGame('snake')" class="px-5 py-3 rounded-lg bg-yellow-400 text-black font-semibold glow w-full">Snake Game</button>
+        <button onclick="startGame('tic')" class="px-5 py-3 rounded-lg bg-yellow-400 text-black font-semibold glow w-full">Tic-Tac-Toe</button>
+        <button onclick="startGame('number')" class="px-5 py-3 rounded-lg bg-yellow-400 text-black font-semibold glow w-full">Number Guess</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAME MODAL -->
+  <div id="gameModal" class="modal bg-black/80">
+    <div class="bg-gray-900 p-6 rounded-lg max-w-xl w-full relative">
+      <button onclick="closeModal('gameModal')" class="absolute top-2 right-2 text-yellow-400 font-bold">✖</button>
+      <h2 id="gameTitle" class="text-2xl font-bold mb-4">Game</h2>
+      <div id="gameMount"></div>
+    </div>
+  </div>
+
+  <!-- RESUME MODAL (FULL PAGE) -->
+  <div id="resumeModal" class="modal bg-black/90 p-4">
+    <div class="bg-gray-900 w-full h-full rounded-lg relative flex flex-col">
+      <button onclick="closeModal('resumeModal')" class="absolute top-2 right-2 text-yellow-400 font-bold z-50 text-2xl">✖</button>
+      <iframe src="assets/resume.pdf" class="w-full h-full rounded-lg" frameborder="0"></iframe>
+    </div>
+  </div>
+
+  <!-- PROFILE PHOTO MODAL -->
+  <div id="profileModal" class="modal bg-black/80">
+    <div class="bg-gray-900 p-6 rounded-lg max-w-sm w-full relative flex justify-center items-center">
+      <button onclick="closeModal('profileModal')" class="absolute top-2 right-2 text-yellow-400 font-bold">✖</button>
+      <img src="assets/photo.jpg" alt="Narendra" class="rounded-lg object-cover w-96 h-96">
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16 bg-gray-900/40 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-4">Contact Info</h2>
+      <p>Email: <a class="text-yellow-400 hover:underline" href="mailto:narendrasetti715@gmail.com">narendrasetti715@gmail.com</a></p>
+      <p>Phone: <a class="text-yellow-400 hover:underline" href="tel:+919390359177">+919390359177</a></p>
+      <p>GitHub: <a class="text-yellow-400 hover:underline" href="https://github.com/Chinnu123-ux" target="_blank">https://github.com/Chinnu123-ux</a></p>
+      <p>LinkedIn: <a class="text-yellow-400 hover:underline" href="https://www.linkedin.com/in/narendra-setti-355a9a319" target="_blank">https://www.linkedin.com/in/narendra-setti-355a9a319</a></p>
+    </div>
+  </section>
+
+  <!-- typing effect script (keeps same behavior you added) -->
+  <script>
+    const dynamicText = document.getElementById('dynamicText');
+    const cursor = document.getElementById('cursor');
+
+    const fullName = "Hello, I'm Setti Narendra Kumar";
+    const roleText = "Hello, I'm a Full Stack Developer and Game Enthusiast";
+
+    setTimeout(() => {
+      let i = fullName.length;
+
+      const deleting = setInterval(() => {
+        if(i > 0){
+          dynamicText.textContent = fullName.substring(0, i-1);
+          i--;
+        } else {
+          clearInterval(deleting);
+          let j = 0;
+          const typing = setInterval(() => {
+            if(j < roleText.length){
+              dynamicText.textContent += roleText[j];
+              j++;
+            } else {
+              clearInterval(typing);
+            }
+          }, 100);
+        }
+      }, 80);
+    }, 2000);
+  </script>
+
+  <!-- particles.js library + init -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#facc15" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5, "random": true },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": true, "distance": 150, "color": "#facc15", "opacity": 0.35, "width": 1 },
+        "move": { "enable": true, "speed": 1.5, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "grab": { "distance": 200, "line_linked": { "opacity": 0.8 } },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+
+  <!-- your external script (games, modal handlers, etc.) -->
+  <script src="script.js"></script>
+</body>
+</html>
